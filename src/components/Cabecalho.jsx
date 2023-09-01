@@ -1,15 +1,22 @@
+import { Link } from "react-router-dom";
 
 export default function Cabecalho() {
-    return(
+  return (
     <>
-        <header>
-            <h1>Vite + React Miguel</h1>
-            <ul>
-              <li><a href="#">item 1</a></li>
-              <li><a href="#">item 2</a></li>
-              <li><a href="#">item 3</a></li>
-            </ul>
-          </header>
+      <header>
+        <h1>Vite + React / Coded By- Rm99997</h1>
+        <ul>
+          <li>
+            <Link to="/">HOME</Link>
+          </li>
+          <li>
+            <Link to="/produtos">PRODUTOS</Link>
+          </li>
+          <li>
+          <Link to="/editar/produtos/1">PRODUTO-1</Link>
+          </li>
+        </ul>
+      </header>
     </>
-    )
+  );
 }
