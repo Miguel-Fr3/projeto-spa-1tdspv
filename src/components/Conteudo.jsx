@@ -1,16 +1,33 @@
 
-export default function Conteudo(props){
+export default function Conteudo(props) {
 
-    return(
-        <>
-                    <section>
-          <div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorem praesentium fuga iste ab. Corporis dicta sed dignissimos, adipisci itaque accusantium provident. Pariatur, est! Nemo ab at temporibus quidem earum?</p>
-            <p>Saepe reprehenderit repudiandae inventore facere deleniti! Pariatur animi obcaecati labore, quasi molestias dignissimos dolore! Ducimus recusandae iusto sit voluptate odio debitis nulla aliquam similique natus? Modi delectus fugit esse ea.</p>
-            <p>Doloremque eos voluptas cum. Modi dolorum necessitatibus cum iste magnam delectus vel tempora voluptatem. Excepturi voluptate facere sunt unde beatae doloremque, modi exercitationem, eligendi minus inventore blanditiis quae accusamus labore!</p>
-            <img src={props.reactLogoProps} alt={props.reactLogoTextoAltProps} />
-          </div>
-        </section>
-        </>
-    )
+
+
+  return (
+    <>
+      <section>
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
+            accusantium repudiandae enim delectus deserunt itaque
+            necessitatibus, obcaecati fugiat suscipit quasi error animi impedit
+            esse distinctio! Cum impedit modi tempora laborum?
+          </p>
+          <p>
+            Incidunt quaerat id neque non dolores atque architecto, praesentium
+            rerum, veritatis magnam iure rem commodi itaque illo vel modi
+            numquam libero quam labore exercitationem laboriosam fuga est. Nam,
+            nostrum commodi!
+          </p>
+          <p>
+            Velit tempora, hic facilis suscipit, beatae aliquid saepe harum
+            aspernatur deserunt unde dicta blanditiis quod maiores accusantium
+            sunt, itaque odit. Facilis magnam eius sapiente illo reiciendis
+            quisquam saepe nisi at?
+          </p>
+          <img src={props.reactLogoProps} alt={props.reactLogoTextoAltProps} />
+        </div>
+      </section>
+    </>
+  );
 }
