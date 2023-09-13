@@ -2,14 +2,26 @@ import { ListaProdutos } from "../components/ListaProdutos";
 import { Link } from "react-router-dom";
 import {AiFillEdit as Editar, AiOutlineDelete as Excluir} from "react-icons/ai";
 import classes from "./Produtos.module.css";
+import { useEffect, useState } from "react";
+
 export default function Produtos() {
 
     document.title = "Lista de Produtos";
 
+
+    useEffect(()=>{
+      console.log("aaaaaa")
+    });
+
+
+    const [exemplo, setexemplo] = useState(0)
     return (
       <div>
           <h1>LISTA DE PRODUTOS</h1>
 
+        <div>
+          <button onClick={()=> setexemplo(exemplo + 1)}>Click - {exemplo}</button>
+        </div>
         <div>
           <table className={classes.tableStyle}>
             <thead >
