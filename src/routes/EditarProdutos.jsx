@@ -16,7 +16,8 @@ export default function EditarProdutos() {
       id: produtoRetornadoDoFiltro.id,
       nome: produtoRetornadoDoFiltro.nome,
       desc: produtoRetornadoDoFiltro.desc,
-      preco: produtoRetornadoDoFiltro.preco
+      preco: produtoRetornadoDoFiltro.preco,
+      img: produtoRetornadoDoFiltro.img
     });
 
     const handleChange = (event) =>{

@@ -1,0 +1,66 @@
+
+.containerExcluir{
+
+
+    .cardExcluir{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .alertMsg{
+                background-color: rgb(255, 82, 82);
+                color: rgb(104, 10, 10);
+                border: rgb(104, 10, 10) solid 2px;
+                padding: 12px 24px;
+                border-radius: 5px;
+            }
+            
+        & h1{
+            text-align: center;
+            background-color: #e1e1e1;
+
+        }
+        & h2{
+            text-align: center;
+            background-color: #e1e1e1;
+
+        }
+        & h3{
+            text-align: center;
+            
+
+        }
+
+
+        & figure{
+            border: 3px solid #000;
+        }
+
+        & img{
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        & figcaption{
+            text-align: center;
+            background-color: rgba(0,0,0,0.7);
+        }
+        
+        & section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        & button{
+            background-color: rgb(255, 82, 82);
+            color: rgb(104, 10, 10);
+            border: rgb(104, 10, 10) solid 2px;
+            padding: 12px 24px;
+            border-radius: 5px;
+        }
+    }   
+
+}
