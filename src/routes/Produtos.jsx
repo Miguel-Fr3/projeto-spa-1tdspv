@@ -8,19 +8,36 @@ export default function Produtos() {
 
     document.title = "Lista de Produtos";
 
+    const [exemplo, setexemplo] = useState([{}])
+
+    const [count, setcount] = useState(0)
+
 
     useEffect(()=>{
       console.log("aaaaaa")
     });
 
 
-    const [exemplo, setexemplo] = useState(0)
+    useEffect(()=>{
+      console.log("aaaaaa one time")
+
+        setexemplo(ListaProdutos)
+
+    },[]);
+
+    useEffect(()=>{
+      console.log("aaaaaa objeto ou coponente ou elemento que esta no array de dependecia ")
+    },[count]);
+
+
+
+
     return (
       <div>
           <h1>LISTA DE PRODUTOS</h1>
 
         <div>
-          <button onClick={()=> setexemplo(exemplo + 1)}>Click - {exemplo}</button>
+          <button onClick={()=> setcount(count + 1)}>conta - {count}</button>
         </div>
         <div>
           <table className={classes.tableStyle}>
@@ -40,7 +57,9 @@ export default function Produtos() {
                   <td className={classes.tableDataStyle}>{produto.nome}</td>
                   <td className={classes.tableDataStyle}>{produto.desc}</td>
                   <td className={classes.tableDataStyle}>{produto.preco}</td>
-                  <td className={classes.tableDataStyle}><Link to={`/editar/produtos/${produto.id}`}><Editar/></Link> | <Link to={`/excluir/produtos/${produto.id}`}><Excluir/></Link></td>
+                  <td className={classes.tableDataStyle}><Link to={`/editar/produtos/
+                  ${produto.id}`}><Editar/></Link> | <Link to={`/excluir/produtos/
+                  ${produto.id}`}><Excluir/></Link></td>
                 </tr>
               ))}
             </tbody>
