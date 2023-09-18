@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { ListaProdutos } from "../components/ListaProdutos";
+import { ListaProdutos } from "../../../components/ListaProdutos";
 import style from "./Excluir.module.css";
 
 export default function ExcluirProdutos() {
