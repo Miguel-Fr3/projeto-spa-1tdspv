@@ -1,33 +1,50 @@
-import { useNavigate } from "react-router-dom";
-import { ListaProdutos } from "../../../components/ListaProdutos";
+import { useNavigate, useParams } from "react-router-dom";
+import { ListaProdutos } from "../components/ListaProdutos";
+import { useState } from "react";
 
-export default function AdicionarProdutos(){
-    const navigate = useNavigate();
+export default function AdicionarProdutos (){
 
-    return(
-        <main>
-            <h1></h1>
-            <form >
-                <fieldset>
-                    <div>
-                        <label htmlFor="idNome">Nome:</label>
-                        <input type="text" name="nome" id="idNome" />
-                    </div>
-                    <div>
-                        <label htmlFor="idDesc">Descrição:</label>
-                        <input type="text" name="desc" id="idDesc" />
-                    </div>
-                    <div>
-                        <label htmlFor="idPreco">Preço:</label>
-                        <input type="number" min="0" name="preco" id="idPreco" />
-                    </div>
-                    <div>
-                        <label htmlFor="idImg">Imagem:</label>
-                        <input type="text" name="Img" id="idImg" />
-                    </div>
-                    <button type="submit">Add</button>
-                </fieldset>
-            </form>
-        </main>
-    )
+    const navegacao = useNavigate();
+		 
+		function criarId(){
+        let maiorId = 0;
+        ListaProdutos.forEach(elemento=>{
+            if (elemento.id > maiorId){
+                maiorId = elemento.id;
+            }
+        })
+        return maiorId + 1;
+    }   
+    const novoId = criarId();
+
+	return (
+		<>
+				<div>
+            <h1>Adicionar Produto</h1>
+            <div>
+                <form onSubmit={}>
+                    <fieldset>
+                            <legend>Informações do Produto</legend>
+                            <input type="hidden" name="id"/>
+                        <div>
+                            <label htmlFor="idProduto">Nome do produto</label>
+                            <input type="text" name = "nome" id="idProd"  onChange={}/>
+                        </div>
+                        <div>
+                            <label htmlFor="idDesc">Descrição</label>
+                            <input type="text" name = "desc" id="idDesc" onChange={}/>
+                        </div>
+                        <div>
+                            <label htmlFor="idPreco">Preço do produto</label>
+                            <input type="text" name = "preco" id="idPreco"  onChange={}/>
+                        </div>
+                        <button >Adicionar</button>
+                        <button onClick={}>Cancelar</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+		</>
+	)
+					
 }
