@@ -5,9 +5,9 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './routes/Home.jsx';
 import Produtos from './routes/Produtos.jsx';
-import EditarProdutos from './routes/EditarProdutos.jsx';
+import EditarProdutos from './routes/produtos/editar/EditarProdutos.jsx';
 import Error from './routes/Error.jsx';
-import ExcluirProdutos from './routes/ExcluirProdutos.jsx';
+import ExcluirProdutos from './routes/produtos/excluir/ExcluirProdutos.jsx';
 
 const router = createBrowserRouter([
   {path: "/" , element: <App/>, errorElement: <Error/>,
@@ -22,6 +22,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router}/>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
 
