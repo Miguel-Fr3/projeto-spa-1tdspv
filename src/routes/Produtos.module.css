@@ -1,0 +1,19 @@
+.tableStyle{
+    border: 2px solid #000;
+    margin: 0 auto;
+    border-collapse: collapse;
+
+    .tableHeaderStyle{
+        background-color: #f1f1c1;
+        border: 2px solid #000;
+    }
+
+    .tableDataStyle{
+        text-align: left;
+        border: 2px solid #000;
+
+    }
+    .tableLineStyle:hover{
+        background-color: #ccc;
+    }
+}
