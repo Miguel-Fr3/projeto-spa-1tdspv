@@ -47,7 +47,7 @@ export default function AdicionarProdutos (){
             <div>
                 <form>
                     <fieldset>
-                            <legend>Informações do Produto</legend>
+                            <legend>Informaçõees do Produto</legend>
                             <input type="hidden" name="id"/>
                         <div>
                             <label htmlFor="idProduto">Nome do produto</label>
