@@ -22,7 +22,7 @@ export default function AdicionarProdutos (){
         nome: "",
         desc: "",
         preco: "",
-        img: "https://picsum.photos/100/100"
+        img: "https://picsum.photos/200/200"
     });
 
 
