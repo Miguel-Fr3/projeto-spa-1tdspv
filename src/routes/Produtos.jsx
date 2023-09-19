@@ -69,6 +69,9 @@ export default function Produtos() {
               <tr>
                 <td colSpan="5" className={classes.tableDataStyle}>Total de Produtos: {ListaProdutos.length}</td>
               </tr>
+              <tr>
+                <td colSpan ="6"><Link to={`/adicionar/produtos/`}>Adicionar Produto</Link></td>
+              </tr>
             </tfoot>
           </table>
         </div>
