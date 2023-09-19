@@ -26,6 +26,11 @@ export default function AdicionarProdutos (){
         img: "https://picsum.photos/100/100"
     });
 
+		
+		const handleChange = (event) =>{
+        const{name,value} = event.target;
+        setProduto({...produto, [name]:value})
+    }
 
 	return (
 		<>
@@ -48,7 +53,7 @@ export default function AdicionarProdutos (){
                             <label htmlFor="idPreco">Preço do produto</label>
                             <input type="text" name = "preco" id="idPreco"/>
                         </div>
-                        <button >Adicionar</button>
+                        <button>Adicionar</button>
                         <button>Cancelar</button>
                     </fieldset>
                 </form>
