@@ -18,8 +18,6 @@ export default function AdicionarProdutos (){
     const novoId = criarId();
 
 
-
-
 		const [produto, setProduto] = useState({
         id: novoId,
         nome: "",
@@ -34,35 +32,37 @@ export default function AdicionarProdutos (){
         setProduto({...produto, [name]:value})
     }
 
+		
+		const handleSubmit = (event) => {
+        event.preventDefault();
+        ListaProdutos.push(produto);
+
+        return navegacao("/produtos"); 
+    }
 
 	return (
 		<>
 				<div>
             <h1>Adicionar Produto</h1>
             <div>
-
-                <form onSubmit={}>
-
+                <form>
                     <fieldset>
-                            <legend>Informações do Produto</legend>
+                            <legend>Informaçõees do Produto</legend>
                             <input type="hidden" name="id"/>
                         <div>
                             <label htmlFor="idProduto">Nome do produto</label>
-
-                            <input type="text" name = "nome" id="idProd"  onChange={}/>
+                            <input type="text" name = "nome" id="idProd"/>
                         </div>
                         <div>
                             <label htmlFor="idDesc">Descrição</label>
-                            <input type="text" name = "desc" id="idDesc" onChange={}/>
+                            <input type="text" name = "desc" id="idDesc"/>
                         </div>
                         <div>
                             <label htmlFor="idPreco">Preço do produto</label>
-                            <input type="text" name = "preco" id="idPreco"  onChange={}/>
+                            <input type="text" name = "preco" id="idPreco"/>
                         </div>
                         <button >Adicionar</button>
-                        <button onClick={}>Cancelar</button>
-
-
+                        <button>Cancelar</button>
                     </fieldset>
                 </form>
             </div>
@@ -70,4 +70,4 @@ export default function AdicionarProdutos (){
 		</>
 	)
 					
-
+}
