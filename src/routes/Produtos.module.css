@@ -17,3 +17,27 @@
         background-color: #ccc;
     }
 }
+
+.botaoStyle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    .linkStyle{
+        text-decoration: none;
+        color: #fbfbfb;
+        background-color: rgb(3, 56, 3);
+        width: 150px;
+        text-align: center;
+        font-weight: bold;
+        border: 2px solid #000;
+        margin: 0 auto;
+        border-collapse: collapse;
+        margin-bottom: 10px;
+    }
+    .linkStyle:hover{
+        background-color: rgb(63, 255, 63);
+        color: rgb(3, 56, 3);
+    }
+}
