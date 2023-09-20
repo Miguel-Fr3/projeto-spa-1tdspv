@@ -7,8 +7,25 @@ import { useEffect, useState } from "react";
 export default function Produtos() {
 
     document.title = "Lista de Produtos";
+    
+    const [listaProdutoLocal, setlistaProdutoLocal] = useState([{}])
 
 
+    useEffect(()=>{
+
+      fetch('http://localhost:5000/produtos',{
+        
+      method: 'GET',
+      headers:{
+        'Content-Type': 'application/json',
+        },
+      }).then((response)=> response.json())
+      .then((data)=>{
+          setlistaProdutoLocal(data);
+      })
+      .catch((err)=>console.log(err));
+
+    },[])
     
     return (
       <div>
@@ -31,7 +48,7 @@ export default function Produtos() {
                 </tr>
             </thead>
             <tbody>
-              {ListaProdutos.map((produto, index) => (
+              {listaProdutoLocal.map((produto, index) => (
                 <tr key={index} className={classes.tableLineStyle}>
                   <td className={classes.tableDataStyle}>{produto.id}</td>
                   <td className={classes.tableDataStyle}>{produto.nome}</td>
