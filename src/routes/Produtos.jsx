@@ -8,30 +8,8 @@ export default function Produtos() {
 
     document.title = "Lista de Produtos";
 
-    const [exemplo, setexemplo] = useState([{}])
 
-    const [count, setcount] = useState(0)
-
-
-    useEffect(()=>{
-      console.log("aaaaaa")
-    });
-
-
-    useEffect(()=>{
-      console.log("aaaaaa one time")
-
-        setexemplo(ListaProdutos)
-
-    },[]);
-
-    useEffect(()=>{
-      console.log("aaaaaa objeto ou coponente ou elemento que esta no array de dependecia ")
-    },[count]);
-
-
-
-
+    
     return (
       <div>
           <h1>LISTA DE PRODUTOS</h1>
@@ -79,3 +57,21 @@ export default function Produtos() {
     )
   }
   
+
+  // const [exemplo, setexemplo] = useState([{}])
+
+  // const [count, setcount] = useState(0)
+
+
+  // useEffect(()=>{
+  //   console.log("aaaaaa")
+  // });
+
+
+  // useEffect(()=>{
+  //   console.log("aaaaaa one time")
+
+  //     setexemplo(ListaProdutos)
+
+  // },[]);
+
