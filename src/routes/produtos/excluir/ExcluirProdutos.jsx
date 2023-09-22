@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { ListaProdutos } from "../../../components/ListaProdutos";
 import style from "./Excluir.module.css";
 
 export default function ExcluirProdutos() {
@@ -10,12 +9,31 @@ export default function ExcluirProdutos() {
 
   const navigate = useNavigate();
 
-  const produto = ListaProdutos.filter((item) => item.id == id)[0];
+ 
+  const [listaProdutosLocal, setListaProdutosLocal] = useState([{}])
+
+
+  useEffect(()=>{
+      fetch("http://localhost:5000/produtos", {
+          method: "GET",
+          headers:{
+              "Content-Type" : "application/json",
+          }
+      })
+      .then((response)=> response.json())
+      .then((data)=>{
+          setListaProdutosLocal(data);
+      }).catch(error => console.log(error))
+
+
+  },[]);
+
+  const produto = listaProdutosLocal.filter((item) => item.id == id)[0];
 
   const handleDelete = () =>{
 
-    let indice = ListaProdutos.findIndex(item => item.id == produto.id)
-    ListaProdutos.splice(indice,1);
+    let indice = listaProdutosLocal.findIndex(item => item.id == produto.id)
+    listaProdutosLocal.splice(indice,1);
     alert("Produto excluido com sucesso!");
     navigate("/produtos");
   }
