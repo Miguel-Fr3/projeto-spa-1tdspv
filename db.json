@@ -55,6 +55,41 @@
       "desc": "Placa de Vídeo - 8GB.",
       "preco": 2000,
       "img": "https://picsum.photos/100/100"
+    },
+    {
+      "nome": "Pendrive",
+      "desc": "16GB",
+      "preco": "50",
+      "img": "https://m.media-amazon.com/images/G/32/apparel/rcxgs/tile._CB483369971_.gif",
+      "id": 9
+    },
+    {
+      "nome": "Pendrive",
+      "desc": "32GB",
+      "preco": "78",
+      "img": "https://m.media-amazon.com/images/G/32/apparel/rcxgs/tile._CB483369971_.gif",
+      "id": 10
+    },
+    {
+      "nome": "Pendrive",
+      "desc": "64GB",
+      "preco": "89",
+      "img": "https://m.media-amazon.com/images/I/61mcOyUlsTL._AC_SL1400_.jpg",
+      "id": 11
+    },
+    {
+      "nome": "Pendrive",
+      "desc": "128Gb",
+      "preco": "110",
+      "img": "https://m.media-amazon.com/images/I/61mcOyUlsTL._AC_SL1400_.jpg",
+      "id": 12
+    },
+    {
+      "id": 13,
+      "nome": "Televisão",
+      "desc": "14\"",
+      "preco": "500",
+      "img": "https://i.zst.com.br/thumbs/12/16/15/1005927.jpg"
     }
   ]
 }
