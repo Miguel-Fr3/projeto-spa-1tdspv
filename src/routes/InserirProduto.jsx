@@ -103,7 +103,7 @@ export default function InserirProduto() {
               />
             </div>
             <div>
-              <button>CADASTRAR</button>
+              <button onChange={handleSubmit}>CADASTRAR</button>
             </div>
           </fieldset>
         </form>

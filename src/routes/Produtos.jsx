@@ -34,7 +34,7 @@ export default function Produtos() {
         
         {open ? <ModalInserir open={open} setOpen={setOpen}/> : ""}
 
-      <button onClick={()=> setOpen(true)}>OPEN-MODAL</button>
+      <Link className={classes.linkStyle} onClick={()=> setOpen(true)}>Cadastrar Produtos</Link>
 
         <div>
           <table className={classes.tableStyle}>
