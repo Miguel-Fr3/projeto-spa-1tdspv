@@ -1,47 +1,44 @@
-import { ListaProdutos } from "../components/ListaProdutos";
 import { Link } from "react-router-dom";
 import {AiFillEdit as Editar, AiOutlineDelete as Excluir} from "react-icons/ai";
 import classes from "./Produtos.module.css";
 import { useEffect, useState } from "react";
+import ModalInserir from "../components/ModalInserir";
 
 export default function Produtos() {
 
     document.title = "Lista de Produtos";
 
-    const [exemplo, setexemplo] = useState([{}])
-
-    const [count, setcount] = useState(0)
-
+    const [listaProdutoLocal, setListaProdutoLocal] = useState([{}])
 
     useEffect(()=>{
-      console.log("aaaaaa")
-    });
 
+        fetch('http://localhost:5000/produtos',{
 
-    useEffect(()=>{
-      console.log("aaaaaa one time")
-
-        setexemplo(ListaProdutos)
-
+          method: 'GET',
+          headers:{
+            'Content-Type': 'application/json',
+          },
+        }).then((response)=> response.json())
+        .then((data)=>{
+            setListaProdutoLocal(data);
+        })
+        .catch((err)=>console.log(err));
+      
     },[]);
 
-    useEffect(()=>{
-      console.log("aaaaaa objeto ou coponente ou elemento que esta no array de dependecia ")
-    },[count]);
-
-
-
+    const [open, setOpen] = useState(false);
 
     return (
       <div>
           <h1>LISTA DE PRODUTOS</h1>
+        
+        {open ? <ModalInserir open={open} setOpen={setOpen}/> : ""}
+
+      <button onClick={()=> setOpen(true)}>OPEN-MODAL</button>
 
         <div>
-          <button onClick={()=> setcount(count + 1)}>conta - {count}</button>
-        </div>
-        <div>
           <table className={classes.tableStyle}>
-            <thead >
+            <thead>
               <tr className={classes.tableHeaderStyle}>
                 <th className={classes.tableHeaderStyle}>ID</th>
                 <th className={classes.tableHeaderStyle}>Nome</th>
@@ -52,25 +49,20 @@ export default function Produtos() {
                 </tr>
             </thead>
             <tbody>
-              {ListaProdutos.map((produto, index) => (
+              {listaProdutoLocal.map((produto, index) => (
                 <tr key={index} className={classes.tableLineStyle}>
                   <td className={classes.tableDataStyle}>{produto.id}</td>
                   <td className={classes.tableDataStyle}>{produto.nome}</td>
                   <td className={classes.tableDataStyle}>{produto.desc}</td>
                   <td className={classes.tableDataStyle}>{produto.preco}</td>
-                  <td className={classes.tableDataStyle}><img src={produto.img} alt={produto.desc} /></td>
-                  <td className={classes.tableDataStyle}><Link to={`/editar/produtos/
-                  ${produto.id}`}><Editar/></Link> | <Link to={`/excluir/produtos/
-                  ${produto.id}`}><Excluir/></Link></td>
+                  <td className={classes.tableDataStyle}><img src={produto.img} alt={produto.desc} width={100}/></td>
+                  <td className={classes.tableDataStyle}><Link to={`/editar/produtos/${produto.id}`}><Editar/></Link> | <Link to={`/excluir/produtos/${produto.id}`}><Excluir/></Link></td>
                 </tr>
-              ))}
+              ))} 
             </tbody>
             <tfoot>
               <tr>
-                <td colSpan="5" className={classes.tableDataStyle}>Total de Produtos: {ListaProdutos.length}</td>
-              </tr>
-              <tr>
-                <td colSpan ="6"><Link to={`/adicionar/produtos/`}>Adicionar Produto</Link></td>
+                <td colSpan="5" className={classes.tableDataStyle}>Total de Produtos: {listaProdutoLocal.length}</td>
               </tr>
             </tfoot>
           </table>
@@ -79,4 +71,20 @@ export default function Produtos() {
       </div>
     )
   }
+
   
+//   <div>
+//   <button onClick={()=> setCount(count + 1)}>COUNTER - {count}</button>
+// </div>
+
+  
+  // const [exemplo, setExemplo] = useState([{}]);
+  // const [count, setCount] = useState(0);
+
+  // useEffect(()=>{
+  //   console.log("Use-Effect que será sempre renderizado!");
+  // });
+  
+  // useEffect(()=>{
+  //   console.log("Use-Effect que será renderizado o objeto ou componente ou elemento que está no array de depenências sofrer atualização.");
+  // },[count]);
