@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./Editar/EditarProdutos.scss"
 
@@ -7,6 +7,7 @@ export default function EditarProdutos() {
 
   document.title = "EDITAR PRODUTO " + id;
 
+  const navigate = useNavigate();
 
   const [produto, setProduto] = useState({
     id: "",
@@ -17,7 +18,7 @@ export default function EditarProdutos() {
   });
 
   useEffect(() => {
-
+    
     fetch(`http://localhost:5000/produtos/${id}`, {
       method: "GET",
       headers: {
@@ -35,7 +36,6 @@ export default function EditarProdutos() {
     const { name, value } = event.target;
     setProduto({ ...produto, [name]: value });
   };
-
 
   return (
     <div>
