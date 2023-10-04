@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { ListaProdutos } from "../components/ListaProdutos";
 import { useState } from "react";
-import "./Editar./EditarProdutos.scss"
+import "./Editar/EditarProdutos.scss"
 
 export default function EditarProdutos() {
   
