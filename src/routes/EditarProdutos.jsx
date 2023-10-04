@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./Editar/EditarProdutos.scss"
 
@@ -7,6 +8,7 @@ export default function EditarProdutos() {
 
   document.title = "EDITAR PRODUTO " + id;
 
+  const navigate = useNavigate();
 
   const [produto, setProduto] = useState({
     id: "",
@@ -17,7 +19,7 @@ export default function EditarProdutos() {
   });
 
   useEffect(() => {
-
+    
     fetch(`http://localhost:5000/produtos/${id}`, {
       method: "GET",
       headers: {
@@ -36,12 +38,29 @@ export default function EditarProdutos() {
     setProduto({ ...produto, [name]: value });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    
+    fetch(`http://localhost:5000/produtos/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(produto),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then(() => {
+        navigate("/produtos");
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div>
       <h1>Editar Produto</h1>
       <div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <fieldset>
             <legend>Produto Selecionado</legend>
             <input type="hidden" name="id" value={produto.id} />
