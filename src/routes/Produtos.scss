@@ -4,25 +4,50 @@ $familiaDaFonte:Arial, Helvetica, sans-serif;
 $tamanhoFonte: 1.5rem;
 $estiloBordas: solid 2px #ccc;
 
-    .tableStyle{
-        border-collapse: collapse;
-        border: $estiloBordas;
-        background-color: $back-color;
-        color: $text-color;
-        margin: 0 auto;
 
-        thead{
+.tableStyle{
+    border: 2px solid #000;
+    margin: 0 auto;
+    border-collapse: collapse;
 
-            background-color: blueviolet;
-            th{
-                border: $estiloBordas;
-            }
-        }
-        
-        tbody{
-            background-color: $estiloBordas;
-            td{
-                background-color: $estiloBordas;
-            }
-        }
+    .tableHeaderStyle{
+        background-color:#8f3ddb;
+        border: 2px solid #000;
     }
+
+    .tableDataStyle{
+        text-align: left;
+        border: 2px solid #000;
+    }
+
+    .tableLineStyle{
+        border: 2px solid #000;
+    }
+    .tableLineStyle:hover{
+        background-color: #cccc;
+    }
+
+}
+.linkStyle{
+    display: block;
+            background-color: #068606;
+            border: 0 solid #ccc;
+            height: 40px;
+            width: 12%;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 5px;
+            margin: 2.5% auto;
+            transition: background-color 300ms;
+            text-align: center;
+            text-decoration: none;
+
+            &:hover{
+                background-color: #4faf4f;
+                
+            }
+            &:active{
+                background-color: #033803;
+            }
+}
