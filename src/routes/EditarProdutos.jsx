@@ -1,5 +1,5 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "./Editar/EditarProdutos.scss"
 
 export default function EditarProdutos() {
@@ -7,7 +7,6 @@ export default function EditarProdutos() {
 
   document.title = "EDITAR PRODUTO " + id;
 
-  const navigate = useNavigate();
 
   const [produto, setProduto] = useState({
     id: "",
@@ -16,6 +15,26 @@ export default function EditarProdutos() {
     preco: "",
     img: "",
   });
+
+  useEffect(() => {
+
+    fetch(`http://localhost:5000/produtos/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setProduto(data); 
+      })
+      .catch((error) => console.log(error));
+  }, [id]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setProduto({ ...produto, [name]: value });
+  };
 
 
   return (
@@ -32,6 +51,7 @@ export default function EditarProdutos() {
                 type="text"
                 name="nome"
                 id="idProd"
+                onChange={handleChange}
                 value={produto.nome}
               />
             </div>
@@ -41,6 +61,7 @@ export default function EditarProdutos() {
                 type="text"
                 name="desc"
                 id="idDesc"
+                onChange={handleChange}
                 value={produto.desc}
               />
             </div>
@@ -50,6 +71,7 @@ export default function EditarProdutos() {
                 type="text"
                 name="preco"
                 id="idPreco"
+                onChange={handleChange}
                 value={produto.preco}
               />
             </div>
