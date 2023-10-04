@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function EditarModal(props) {
-  const { produto, isOpen, onClose, onEdit } = props;
+  const { produto, isOpen, setOpenEditar, onEdit } = props;
 
   const [editedProduct, setEditedProduct] = useState({ ...produto });
 
@@ -11,15 +11,17 @@ function EditarModal(props) {
   };
 
   const handleSubmit = () => {
-    // Faça a solicitação PUT ou PATCH para atualizar o produto no backend aqui
-    // Depois, chame a função onEdit para atualizar o produto no estado da lista
+    
     onEdit(editedProduct);
-    onClose();
+    setOpenEditar(false);
   };
 
   return (
     <div className={`modal ${isOpen ? "open" : ""}`}>
       <div className="modal-content">
+        <button className="close-button" onClick={() => setOpenEditar(false)}>
+          Fechar
+        </button>
         <h2>Editar Produto</h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor="editName">Nome:</label>
@@ -47,9 +49,6 @@ function EditarModal(props) {
             onChange={handleChange}
           />
           <button type="submit">Salvar</button>
-          <button type="button" onClick={onClose}>
-            Fechar
-          </button>
         </form>
       </div>
     </div>

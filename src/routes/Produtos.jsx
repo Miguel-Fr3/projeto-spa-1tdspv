@@ -47,15 +47,15 @@ export default function Produtos() {
         />
       )}
 
-      <Link className={classes.linkStyle} onClick={() => setOpen(true)}>
+      <Link className="linkStyle" onClick={() => setOpen(true)}>
         Cadastrar Produtos
       </Link>
 
       <div>
         <table className="tableStyle">
-          <thead>
-            <tr>
-              <th>ID</th>
+          <thead className="tableHeaderStyle">
+            <tr >
+              <th >ID</th>
               <th>Nome</th>
               <th>Descrição</th>
               <th>Preço</th>
@@ -66,14 +66,14 @@ export default function Produtos() {
           <tbody>
             {listaProdutoLocal.map((produto, index) => (
               <tr key={index}>
-                <td>{produto.id}</td>
-                <td>{produto.nome}</td>
-                <td>{produto.desc}</td>
-                <td>{produto.preco}</td>
-                <td>
+                <td className="tableLineStyle">{produto.id}</td>
+                <td className="tableLineStyle">{produto.nome}</td>
+                <td className="tableLineStyle">{produto.desc}</td>
+                <td className="tableLineStyle">{produto.preco}</td>
+                <td className="tableLineStyle">
                   <img src={produto.img} alt={produto.desc} width={100} />
                 </td>
-                <td>
+                <td className="tableLineStyle">
                   <button
                     onClick={() => handleOpenEditarModal(produto)}
                   >
