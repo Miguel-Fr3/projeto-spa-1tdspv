@@ -51,13 +51,13 @@ export default function Produtos() {
             </thead>
             <tbody>
               {listaProdutoLocal.map((produto, index) => (
-                <tr key={index} className={classes.tableLineStyle}>
-                  <td className={classes.tableDataStyle}>{produto.id}</td>
-                  <td className={classes.tableDataStyle}>{produto.nome}</td>
-                  <td className={classes.tableDataStyle}>{produto.desc}</td>
-                  <td className={classes.tableDataStyle}>{produto.preco}</td>
-                  <td className={classes.tableDataStyle}><img src={produto.img} alt={produto.desc} width={100}/></td>
-                  <td className={classes.tableDataStyle}><Link to={`/editar/produtos/${produto.id}`}><Editar/></Link> | <Link to={`/excluir/produtos/${produto.id}`}><Excluir/></Link></td>
+                <tr key={index}>
+                  <td >{produto.id}</td>
+                  <td >{produto.nome}</td>
+                  <td >{produto.desc}</td>
+                  <td >{produto.preco}</td>
+                  <td ><img src={produto.img} alt={produto.desc} width={100}/></td>
+                  <td ><Link to={`/editar/produtos/${produto.id}`}><Editar/></Link> | <Link to={`/excluir/produtos/${produto.id}`}><Excluir/></Link></td>
                 </tr>
               ))} 
             </tbody>
