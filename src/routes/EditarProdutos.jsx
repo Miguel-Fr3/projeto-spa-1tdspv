@@ -1,26 +1,48 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { ListaProdutos } from "../components/ListaProdutos";
 import { useState } from "react";
 import "./Editar/EditarProdutos.scss"
 
 export default function EditarProdutos() {
-  
+  const { id } = useParams();
+
+  document.title = "EDITAR PRODUTO " + id;
+
+  const navigate = useNavigate();
+
+  const [produto, setProduto] = useState({
+    id: "",
+    nome: "",
+    desc: "",
+    preco: "",
+    img: "",
+  });
+
 
   return (
     <div>
-      <h1>EditarProdutos</h1>
+      <h1>Editar Produto</h1>
       <div>
-        <form onSubmit={handleSubmit} className="form">
+        <form>
           <fieldset>
             <legend>Produto Selecionado</legend>
             <input type="hidden" name="id" value={produto.id} />
             <div>
               <label htmlFor="idProd">Nome do Produto</label>
-              <input type="text" name="nome" id="idProd" onChange={handleChange} value={produto.nome} />
+              <input
+                type="text"
+                name="nome"
+                id="idProd"
+                value={produto.nome}
+              />
             </div>
             <div>
               <label htmlFor="idDesc">Descrição</label>
-              <input type="text" name="desc" id="idDesc" onChange={handleChange} value={produto.desc} />
+              <input
+                type="text"
+                name="desc"
+                id="idDesc"
+                value={produto.desc}
+              />
             </div>
             <div>
               <label htmlFor="idPreco">Preço</label>
@@ -28,22 +50,15 @@ export default function EditarProdutos() {
                 type="text"
                 name="preco"
                 id="idPreco"
-                onChange={handleChange}
                 value={produto.preco}
               />
             </div>
             <div>
-              <button>EDITAR</button>
+              <button type="submit">EDITAR</button>
             </div>
           </fieldset>
         </form>
       </div>
-
-        <div>
-          <p>Nome : {produto.nome}</p>
-          <p>Desc : {produto.desc}</p>
-          <p>Preço : {produto.preco}</p>
-        </div>
     </div>
   );
 }
