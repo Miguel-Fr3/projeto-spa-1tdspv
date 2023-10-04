@@ -1,55 +1,16 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { ListaProdutos } from "../components/ListaProdutos";
 import { useState } from "react";
+import "./Editar/EditarProdutos.scss"
 
 export default function EditarProdutos() {
-  //Utilizar o HOOK useParams() para recuperar o ID passado no path
-  const { id } = useParams();
-
-  document.title = "EDITAR PRODUTOS " + id;
-
-  const navigate = useNavigate();
-
-  const produtoRetornadoDoFiltro = ListaProdutos.filter(
-    (produto) => produto.id == id
-  )[0];
-
-  //useState()
-  const [produto, setProduto] = useState({
-    id: produtoRetornadoDoFiltro.id,
-    nome: produtoRetornadoDoFiltro.nome,
-    desc: produtoRetornadoDoFiltro.desc,
-    preco: produtoRetornadoDoFiltro.preco,
-    img: produtoRetornadoDoFiltro.img,
-    
-  });
-
-  const handleChange = (event) =>{
-    //Destructuring
-    const {name, value} = event.target;
-    setProduto({...produto,[name]:value});
-  }
-
-  const handleSubmit = (event) =>{
-     event.preventDefault();
-
-     let indice;
-
-     ListaProdutos.forEach((item,index)=>{
-        if(item.id == id){
-          indice = index;
-        }
-     });
-     ListaProdutos.splice(indice,1,produto);
-     navigate("/produtos");
-  }
-
+  
 
   return (
     <div>
       <h1>EditarProdutos</h1>
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form">
           <fieldset>
             <legend>Produto Selecionado</legend>
             <input type="hidden" name="id" value={produto.id} />
