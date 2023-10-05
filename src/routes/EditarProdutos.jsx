@@ -1,7 +1,7 @@
 
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import "./Editar/EditarProdutos.scss"
+
 
 export default function EditarProdutos() {
   const { id } = useParams();

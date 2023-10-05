@@ -2,9 +2,9 @@
   "produtos": [
     {
       "id": 1,
-      "nome": "Teclado",
+      "nome": "Teclados",
       "desc": "Teclado  102 Teclas - Mecânico",
-      "preco": "459",
+      "preco": "450",
       "img": "https://picsum.photos/100/100"
     },
     {
