@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { AiFillEdit as Editar, AiOutlineDelete as Excluir } from "react-icons/ai";
-import classes from "./Produtos.module.css";
 import { useEffect, useState } from "react";
 import ModalInserir from "../components/ModalInserir";
 import EditarModal from "../components/ModalEditar"; 
@@ -89,7 +88,7 @@ export default function Produtos() {
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan="5" className={classes.tableDataStyle}>
+              <td colSpan="5" className="tableDataStyle">
                 Total de Produtos: {listaProdutoLocal.length}
               </td>
             </tr>
