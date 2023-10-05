@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function EditarModal(props) {
-  const { produto, isOpen, setOpenEditar, onEdit } = props;
+function ModalEditar(props) {
+ 
+  const { produto } = props;
 
+  const navigate = useNavigate(); 
   const [editedProduct, setEditedProduct] = useState({ ...produto });
 
   const handleChange = (event) => {
@@ -11,48 +14,66 @@ function EditarModal(props) {
   };
 
   const handleSubmit = () => {
-    
-    onEdit(editedProduct);
-    setOpenEditar(false);
+    fetch(`http://localhost:5000/produtos/${editedProduct.id}`, { 
+      method: "PUT",
+      body: JSON.stringify(editedProduct), 
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then(() => {
+        navigate("/produtos"); 
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
-    <div className={`modal ${isOpen ? "open" : ""}`}>
+    <div className={`modal`}>
       <div className="modal-content">
-        <button className="close-button" onClick={() => setOpenEditar(false)}>
-          Fechar
-        </button>
-        <h2>Editar Produto</h2>
+        <h1>Editar Produto</h1>
+        
         <form onSubmit={handleSubmit}>
-          <label htmlFor="editName">Nome:</label>
-          <input
-            type="text"
-            id="editName"
-            name="nome"
-            value={editedProduct.nome}
-            onChange={handleChange}
-          />
-          <label htmlFor="editDescription">Descrição:</label>
-          <input
-            type="text"
-            id="editDescription"
-            name="desc"
-            value={editedProduct.desc}
-            onChange={handleChange}
-          />
-          <label htmlFor="editPrice">Preço:</label>
-          <input
-            type="text"
-            id="editPrice"
-            name="preco"
-            value={editedProduct.preco}
-            onChange={handleChange}
-          />
-          <button type="submit">Salvar</button>
+          <div className="fechar">
+          <span onClick={()=> props.setOpenEditar(false)}>X</span>
+          </div>
+          <div>
+            <label htmlFor="editName">Nome:</label>
+            <input
+              type="text"
+              id="editName"
+              name="nome"
+              value={editedProduct.nome}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="editDescription">Descrição:</label>
+            <input
+              type="text"
+              id="editDescription"
+              name="desc"
+              value={editedProduct.desc}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="editPrice">Preço:</label>
+            <input
+              type="text"
+              id="editPrice"
+              name="preco"
+              value={editedProduct.preco}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="botao"> 
+            <button type="submit">Salvar</button>
+          </div>
         </form>
       </div>
     </div>
   );
 }
 
-export default EditarModal;
+export default ModalEditar;
