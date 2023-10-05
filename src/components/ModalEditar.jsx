@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function EditarModal(props) {
-  const { produto, isOpen, setOpenEditar, onEdit } = props;
-
+function ModalEditar(props) {
+  const { produto, isOpen, onClose, onEdit } = props;
+  const navigate = useNavigate(); 
   const [editedProduct, setEditedProduct] = useState({ ...produto });
 
   const handleChange = (event) => {
@@ -11,18 +12,28 @@ function EditarModal(props) {
   };
 
   const handleSubmit = () => {
+    fetch(`http://localhost:5000/produtos/${editedProduct.id}`, { 
+      method: "PUT",
+      body: JSON.stringify(editedProduct), 
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then(() => {
+        navigate("/produtos"); 
+      })
+      .catch((error) => console.log(error));
     
     onEdit(editedProduct);
-    setOpenEditar(false);
+    onClose();
   };
 
   return (
     <div className={`modal ${isOpen ? "open" : ""}`}>
       <div className="modal-content">
-        <button className="close-button" onClick={() => setOpenEditar(false)}>
-          Fechar
-        </button>
-        <h2>Editar Produto</h2>
+        <h1>Editar Produto</h1>
+        
         <form onSubmit={handleSubmit}>
           <label htmlFor="editName">Nome:</label>
           <input
@@ -49,10 +60,13 @@ function EditarModal(props) {
             onChange={handleChange}
           />
           <button type="submit">Salvar</button>
+          <button type="button" onClick={onClose}>
+            Fechar
+          </button>
         </form>
       </div>
     </div>
   );
 }
 
-export default EditarModal;
+export default ModalEditar;
