@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function ModalEditar(props) {
-  const { produto, isOpen, onClose, onEdit } = props;
+ 
+  const { produto } = props;
+
   const navigate = useNavigate(); 
   const [editedProduct, setEditedProduct] = useState({ ...produto });
 
@@ -24,45 +26,50 @@ function ModalEditar(props) {
         navigate("/produtos"); 
       })
       .catch((error) => console.log(error));
-    
-    onEdit(editedProduct);
-    onClose();
   };
 
   return (
-    <div className={`modal ${isOpen ? "open" : ""}`}>
+    <div className={`modal`}>
       <div className="modal-content">
         <h1>Editar Produto</h1>
         
         <form onSubmit={handleSubmit}>
-          <label htmlFor="editName">Nome:</label>
-          <input
-            type="text"
-            id="editName"
-            name="nome"
-            value={editedProduct.nome}
-            onChange={handleChange}
-          />
-          <label htmlFor="editDescription">Descrição:</label>
-          <input
-            type="text"
-            id="editDescription"
-            name="desc"
-            value={editedProduct.desc}
-            onChange={handleChange}
-          />
-          <label htmlFor="editPrice">Preço:</label>
-          <input
-            type="text"
-            id="editPrice"
-            name="preco"
-            value={editedProduct.preco}
-            onChange={handleChange}
-          />
-          <button type="submit">Salvar</button>
-          <button type="button" onClick={onClose}>
-            Fechar
-          </button>
+          <div className="fechar">
+          <span onClick={()=> props.setOpenEditar(false)}>X</span>
+          </div>
+          <div>
+            <label htmlFor="editName">Nome:</label>
+            <input
+              type="text"
+              id="editName"
+              name="nome"
+              value={editedProduct.nome}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="editDescription">Descrição:</label>
+            <input
+              type="text"
+              id="editDescription"
+              name="desc"
+              value={editedProduct.desc}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="editPrice">Preço:</label>
+            <input
+              type="text"
+              id="editPrice"
+              name="preco"
+              value={editedProduct.preco}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="botao"> 
+            <button type="submit">Salvar</button>
+          </div>
         </form>
       </div>
     </div>
