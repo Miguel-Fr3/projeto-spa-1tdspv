@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { AiFillEdit as Editar, AiOutlineDelete as Excluir } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import ModalInserir from "../components/ModalInserir";
-import EditarModal from "../components/ModalEditar"; 
+import ModalEditar from "../components/ModalEditar"; 
 import "./Produtos.scss";
 
 export default function Produtos() {
@@ -40,7 +40,7 @@ export default function Produtos() {
       {open ? <ModalInserir open={open} setOpen={setOpen} /> : ""}
 
       {openEditar && (
-        <EditarModal
+        <ModalEditar
           produto={produtoParaEditar}
           setOpenEditar={setOpenEditar}
         />

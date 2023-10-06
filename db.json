@@ -3,7 +3,7 @@
     {
       "id": 1,
       "nome": "Teclados",
-      "desc": "Teclado  102 Teclas - Mecânico",
+      "desc": "Teclado  102 Teclas - Mecânic",
       "preco": "450",
       "img": "https://picsum.photos/100/100"
     },
@@ -44,9 +44,9 @@
     },
     {
       "id": 7,
-      "nome": "Gabineteds",
+      "nome": "Gabinete",
       "desc": "Gabinete Gamer - Vidro Temperado.",
-      "preco": 500,
+      "preco": "800",
       "img": "https://picsum.photos/100/100"
     },
     {

@@ -6,17 +6,17 @@ function ModalEditar(props) {
   const { produto } = props;
 
   const navigate = useNavigate(); 
-  const [editedProduct, setEditedProduct] = useState({ ...produto });
+  const [setProdutoParaEditar, setProdutoEditado] = useState({ ...produto });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setEditedProduct({ ...editedProduct, [name]: value });
+    setProdutoEditado({ ...setProdutoParaEditar, [name]: value });
   };
 
   const handleSubmit = () => {
-    fetch(`http://localhost:5000/produtos/${editedProduct.id}`, { 
+    fetch(`http://localhost:5000/produtos/${setProdutoParaEditar.id}`, { 
       method: "PUT",
-      body: JSON.stringify(editedProduct), 
+      body: JSON.stringify(setProdutoParaEditar), 
       headers: {
         "Content-Type": "application/json",
       },
@@ -43,7 +43,7 @@ function ModalEditar(props) {
               type="text"
               id="editName"
               name="nome"
-              value={editedProduct.nome}
+              value={setProdutoParaEditar.nome}
               onChange={handleChange}
             />
           </div>
@@ -53,7 +53,7 @@ function ModalEditar(props) {
               type="text"
               id="editDescription"
               name="desc"
-              value={editedProduct.desc}
+              value={setProdutoParaEditar.desc}
               onChange={handleChange}
             />
           </div>
@@ -63,7 +63,7 @@ function ModalEditar(props) {
               type="text"
               id="editPrice"
               name="preco"
-              value={editedProduct.preco}
+              value={setProdutoParaEditar.preco}
               onChange={handleChange}
             />
           </div>
